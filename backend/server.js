@@ -296,4 +296,9 @@ app.post("/api/voicecoach/report", async (req,res)=>{
   }catch(e){res.status(500).json({error:e.message});}
 });
 
-app.listen(PORT,()=>console.log(`Saarthi ERP Node backend running on http://localhost:${PORT}`));
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => console.log(`Saarthi ERP Node backend running on http://localhost:${PORT}`));
+}
+
+module.exports = app;
+
